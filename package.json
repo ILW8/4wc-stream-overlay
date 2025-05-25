@@ -1,0 +1,79 @@
+{
+  "name": "nodecg-vue-ts-template",
+  "version": "3.0.0",
+  "description": "Template for NodeCG bundles that use Vue.js and TypeScript.",
+  "homepage": "https://github.com/zoton2/nodecg-vue-ts-template#readme",
+  "bugs": {
+    "url": "https://github.com/zoton2/nodecg-vue-ts-template/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zoton2/nodecg-vue-ts-template.git"
+  },
+  "license": "MIT",
+  "author": "zoton2",
+  "type": "module",
+  "scripts": {
+    "autofix": "eslint --fix",
+    "prebuild": "trash ./extension && trash ./node_modules/.vite && trash ./shared/dist && trash ./dashboard && trash ./graphics",
+    "build": "vite build && tsc -b tsconfig.extension.json",
+    "lint": "eslint",
+    "schema-types": "nodecg schema-types",
+    "start": "cd ../.. && node index.js",
+    "watch": "conc -n B,E -c red,blue -k vite \"tsc -b -w --preserveWatchOutput tsconfig.extension.json\""
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.25.1",
+    "@quasar/extras": "^1.16.17",
+    "@quasar/vite-plugin": "^1.9.0",
+    "@tsconfig/node22": "^22.0.1",
+    "@types/node": "^22.15.3",
+    "@unhead/vue": "^2.0.8",
+    "@vitejs/plugin-vue": "^5.2.3",
+    "@vue/eslint-config-typescript": "^14.5.0",
+    "@vue/tsconfig": "^0.7.0",
+    "concurrently": "^9.1.2",
+    "eslint": "^9.25.1",
+    "eslint-plugin-vue": "^10.1.0",
+    "nodecg": "^2.5.3",
+    "nodecg-vue-composable": "^1.1.0",
+    "quasar": "^2.18.1",
+    "sass-embedded": "^1.87.0",
+    "trash-cli": "^6.0.0",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.31.1",
+    "vite": "^6.3.4",
+    "vite-plugin-checker": "^0.9.1",
+    "vite-plugin-nodecg": "^2.1.0",
+    "vue": "^3.5.13",
+    "vue-tsc": "^2.2.10"
+  },
+  "pnpm": {
+    "overrides": {
+      "vite-plugin-nodecg>vite": "$vite"
+    }
+  },
+  "nodecg": {
+    "compatibleRange": "^2.3.0",
+    "dashboardPanels": [
+      {
+        "name": "example",
+        "title": "Example",
+        "file": "example/main.html",
+        "width": 3
+      }
+    ],
+    "graphics": [
+      {
+        "file": "example/main.html",
+        "width": 1920,
+        "height": 1080
+      }
+    ]
+  },
+  "overrides": {
+    "vite-plugin-nodecg": {
+      "vite": "$vite"
+    }
+  }
+}
