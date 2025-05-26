@@ -1,15 +1,23 @@
 <script setup lang="ts">
-import { useHead } from '@unhead/vue';
+import { Configschema, ExampleReplicant } from '@4wc-stream-overlay/types/schemas';
+import { useHead } from '@vueuse/head';
+import { useReplicant } from 'nodecg-vue-composable';
 import { ref } from 'vue';
-import { exampleReplicant } from '../../browser_shared/replicants';
-import type { ExampleType } from '../../types';
 
-useHead({ title: 'example' }); // set the title of this page
 const text = ref('Example');
 
-// Example code: accessing normal types.
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const exampleType: ExampleType = { exampleProperty: 'exampleString' };
+// Set the title of this page.
+useHead({ title: 'example' });
+
+// Helper composable to make accessing/modifying replicants easier.
+// For more information see https://github.com/Dan-Shields/nodecg-vue-composable
+const exampleReplicant = useReplicant<ExampleReplicant>(
+  'exampleReplicant',
+  '4wc-stream-overlay',
+);
+
+// Access the bundle configuration with types.
+const config = nodecg.bundleConfig as unknown as Configschema;
 </script>
 
 <template>
@@ -17,8 +25,5 @@ const exampleType: ExampleType = { exampleProperty: 'exampleString' };
     {{ text }}
     <br><br>
     <img src="./image.png">
-    <br><br>
-    <!-- Example code: accessing a replicant. -->
-    {{ exampleReplicant?.data?.exampleProperty }}
   </div>
 </template>

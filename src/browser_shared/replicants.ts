@@ -1,12 +1,54 @@
-import { useReplicant } from 'nodecg-vue-composable';
-import type { Schemas } from '../types';
+import type {
+  CountdownReplicant,
+  CurrentGosumemoryConnectionStatus,
+  CurrentOsuSongOverrides,
+  CurrentOsuSongReplicant,
+  // CurrentRefereeHelperConnectionStatus,
+  // CurrentRefereeHelperData, MatchesReplicant,
+  OsuTourneyData,
+  // OpponentSeedingsReplicant,
+  // ShoutcastersReplicant, SpotifyReplicant, SpotifyTokensReplicant, SheetsKeyValueStoreReplicant, UserExtendedReplicant,
+  // ShowCamerasReplicant,
+} from '../types/schemas';
 
-// YOU MUST CHANGE THIS TO YOUR BUNDLE'S NAME!
-const thisBundle = 'nodecg-vue-ts-template';
+export const namespace = '4wc-stream-overlay';
 
-/**
- * This is where you can declare all of your replicants to import easily into other (browser based) files.
- * "useReplicant" is a helper composable to make accessing/modifying replicants easier.
- * For more information see https://github.com/Dan-Shields/nodecg-vue-composable
- */
-export const exampleReplicant = useReplicant<Schemas.ExampleReplicant>('exampleReplicant', thisBundle);
+export interface ReplicantTypes {
+  countdown: CountdownReplicant;
+  gosumemoryStatus: CurrentGosumemoryConnectionStatus;
+  // matches: MatchesReplicant;
+  osuSong: CurrentOsuSongReplicant;
+  osuSongOverrides: CurrentOsuSongOverrides;
+  osuTourney: OsuTourneyData;
+  // refereeHelper: CurrentRefereeHelperData;
+  // refereeHelperStatus: CurrentRefereeHelperConnectionStatus;
+  // seeding: OpponentSeedingsReplicant;
+  // sheetsKv: SheetsKeyValueStoreReplicant;
+  // sheetsKvSecond: SheetsKeyValueStoreReplicant;
+  // sheetsQualsUsers: SheetsKeyValueStoreReplicant;
+  // shoutcasters: ShoutcastersReplicant;
+  // showCasterCams: ShowCamerasReplicant;
+  // spotifyReplicant: SpotifyReplicant;
+  // spotifyTokensReplicant: SpotifyTokensReplicant;
+  // userMetadata: UserExtendedReplicant;
+}
+
+export const replicantOptions = {
+  countdown: { persistent: true },
+  gosumemoryStatus: { persistent: true },
+  matches: { persistent: true },
+  osuSong: { persistent: false },
+  osuSongOverrides: { persistent: true },
+  osuTourney: { persistent: false },
+  refereeHelper: { persistent: false },
+  refereeHelperStatus: { persistent: true },
+  seeding: { persistent: true },
+  sheetsKv: { persistent: true },
+  sheetsKvSecond: { persistent: true },
+  sheetsQualsUsers: { persistent: true },
+  shoutcasters: { persistent: true },
+  spotifyReplicant: { persistent: true },
+  spotifyTokensReplicant: { persistent: true },
+  userMetadata: { persistent: true },
+  showCasterCams: { persistent: false },
+} as const;

@@ -1,7 +1,12 @@
-import type { NodeCGServerAPI } from '../../types/index.js';
+import type NodeCG from '@nodecg/types';
+import { Configschema } from '@4wc-stream-overlay/types/schemas';
 
-export let nodecg!: NodeCGServerAPI;
+let nodecg: NodeCG.ServerAPI<Configschema>;
 
-export function set(ctx: NodeCGServerAPI) {
+export function set(ctx: typeof nodecg): void {
   nodecg = ctx;
+}
+
+export function get(): typeof nodecg {
+  return nodecg;
 }
