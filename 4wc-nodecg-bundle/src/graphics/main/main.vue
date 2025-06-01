@@ -222,7 +222,9 @@ watch(chatMessages, (newMessages, oldMessages) => {
 });
 
 const indexedMessages = computed(() => {
-  const filteredMessages = tourneyDataReplicant.data?.chat?.filter((msg) => !msg.messageBody.startsWith('Match history available'));
+  const filteredMessages = tourneyDataReplicant.data?.chat
+    ?.filter((msg) => !msg.messageBody.startsWith('Match history available'))
+    ?.filter((msg) => !msg.messageBody.startsWith('!mp') || msg.messageBody.startsWith('!mp timer'));
   const indexed = filteredMessages?.map((msg, index) => ({ ...msg, index })) ?? [];
   return indexed.slice(-8);
 });
