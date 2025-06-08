@@ -1,5 +1,6 @@
 /* hide user by ID */
-[data-userid="0"] { display: none; }
+[data-userid="181358896328212480"],
+[data-userid="258502759018397696"] { display: none; }
 
 body {
     --color: #111111;

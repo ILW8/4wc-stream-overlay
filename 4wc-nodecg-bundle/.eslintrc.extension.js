@@ -32,6 +32,7 @@ module.exports = {
     '@typescript-eslint/lines-between-class-members': 'off',
 	// max-len OFF
 	'max-len': 'off',
+    "linebreak-style": "off",
     // I mainly have this off as it ruins auto import sorting in VSCode.
     'object-curly-newline': 'off',
     'import/extensions': ['error', 'ignorePackages', {
